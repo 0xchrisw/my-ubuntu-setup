@@ -1,0 +1,97 @@
+---
+
+packages:
+  - ansible
+  - aptitude
+  - bc
+  - build-essential
+  - bzip2
+  - ca-certificates
+  - cockpit
+  - cockpit-bridge
+  - cockpit-dashboard
+  - cockpit-doc
+  - cockpit-machines
+  - cockpit-networkmanager
+  - cockpit-packagekit
+  - cockpit-storaged
+  - cockpit-system
+  - cockpit-ws
+  - curl
+  - diffutils
+  - dnsutils
+  - dos2unix
+  - fdupes
+  - gawk
+  - gcc
+  - git
+  - gnome-disk-utility
+  - gnupg
+  - gparted
+  - grep
+  - gzip
+  - hostapd
+  - htop
+  - httping
+  - ipcalc
+  - iw
+  - jq
+  - less
+  - lsof
+  - make
+  - nano
+  - nmap
+  - openssl
+  - p7zip-full
+  - podman
+  - pv
+  - python3
+  - python3-pip
+  - rsync
+  - screen
+  - smbclient
+  - software-properties-common
+  - sshfs
+  - sshpass
+  - tar
+  - tcpdump
+  - tmux
+  - unzip
+  - vim
+  - wget
+  - whois
+  - wireless-tools
+  - wireshark
+  - wireshark-gtk
+  - wvdial
+  - xz-utils
+  - zip
+
+  - qemu
+  - peek
+  - keepassxc
+  - tilix
+  - exfat-fuse
+  - exfat-utils
+  - ntfs-3g
+  - python3-virtualenv
+  - python3-virtualenvwrapper
+  - awscli
+
+  #- golang
+  #- npm
+  #- node
+  #- nodejs
+
+  ## TODO:
+  # Discord
+  # VSCode
+  # Google Chome
+  # Docker
+  # Docker Compose
+  # fish
+  # github-desktop
+  # gitkraken/
+
+
+...

@@ -1,0 +1,8 @@
+---
+
+spa_slop_shift: 15
+
+timer:
+  persistent: true
+  schedule: '*-*-* 00:00:00'
+
