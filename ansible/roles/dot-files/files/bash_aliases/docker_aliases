@@ -1,0 +1,36 @@
+
+# Aliases for to show TOP info in docker
+docker_top() {
+  docker stats --format "table {{.Container}}\t{{.Name}}\t{{.CPUPerc}}  {{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"
+}
+
+docker_exec() {
+  docker exec -it $1 $2
+}
+
+# Show log with container name
+docker_logs() {
+  docker logs -f `docker ps | grep $1 | awk '{print $1}'`
+}
+
+docker_clean() {
+  docker rm $(docker ps --all -q -f status=exited)
+  docker volume rm $(docker volume ls -qf dangling=true)
+}
+
+docker_prune() {
+  docker system prune -af
+  docker system prune --volumes -af
+}
+
+docker_stats() {
+  if [ $# -eq 0 ]
+    then docker stats --no-stream;
+    else docker stats --no-stream | grep $1;
+  fi
+}
+
+# List ports opened
+opened_ports() {
+  lsof -i -P -n | grep LISTEN
+}
