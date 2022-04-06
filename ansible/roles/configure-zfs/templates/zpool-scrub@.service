@@ -7,8 +7,9 @@ Requires=zfs.target
 After=zfs.target
 
 [Service]
-Type=oneshot
-ExecStart=/sbin/zpool scrub %i
+Type=simple
+#Type=oneshot
+ExecStart=/usr/sbin/zpool scrub %i
 
-[Install]
-WantedBy=zfs.target timers.target
+# [Install]
+# WantedBy=zfs.target timers.target
