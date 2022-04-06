@@ -1,0 +1,15 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- name: send-notification |
+  shell: |
+    DISPLAY=:0.0 \
+      /usr/bin/notify-send \
+      --expire-time= {{ timeout | default(3000) }} \
+      "{{ title | default('Notification') }}" \
+      "{{ message }}"
+  changed_when: false
+  failed_when:  false
+
+
+...
