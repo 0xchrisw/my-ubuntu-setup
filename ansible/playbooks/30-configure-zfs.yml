@@ -1,0 +1,32 @@
+#!/usr/bin/env ansible-playbook
+---
+
+### sensible ###
+# - name: Configure ZFS
+# - description: Configure ZFS
+# - index: 30
+# - vars:
+#   - -K
+# - tags:
+#   - packages
+### /sensible ###
+
+
+- name: Install Packages
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  vars_files:
+    - "../vars/common.yml"
+
+  roles:
+   - { role: configure-zfs, become: true }
+
+  post_tasks:
+    - name: "Host Facts"
+      debug:
+        var: hostvars[inventory_hostname]
+        verbosity: 2
+
+...

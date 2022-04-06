@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-playbook
+---
+
+### sensible ###
+# - name: Playbooks
+# - description: Select tasks below.
+# - index: 0
+# - tags:
+#   - seperator
+### /sensible ###
+
+...

@@ -1,0 +1,27 @@
+#!/usr/bin/env ansible-playbook
+---
+
+### sensible ###
+# - name: Reboot
+# - description: Reboot the device
+# - index: 98
+# - tags:
+#   - packages
+### /sensible ###
+
+
+- name: Reboot the Host
+  hosts: localhost
+  connection: local
+  # become: true
+  gather_facts: false
+
+  vars_files:
+    - "../vars/common.yml"
+
+  tasks:
+    - import_role:
+        name: common
+        tasks_from: reboot.yml
+
+...
