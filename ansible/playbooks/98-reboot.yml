@@ -6,7 +6,7 @@
 # - description: Reboot the device
 # - index: 98
 # - tags:
-#   - packages
+#   - reboot
 ### /sensible ###
 
 
