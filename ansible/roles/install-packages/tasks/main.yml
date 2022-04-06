@@ -1,0 +1,44 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- name: install-packages | Include Package List
+  include_vars: "../vars/packages.yml"
+
+
+- name: install-packages | Upgrade system
+  apt:
+    upgrade: dist
+    update_cache: true
+
+
+# - name: common | Install Packages
+#   apt:
+#     pkg: "{{ packages }}"
+#     state: present
+#     update_cache: yes
+#   with_items:
+
+
+- name: install-packages | Remove useless packages from the cache
+  apt:
+    autoclean: yes
+
+
+- name: install-packages | Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
+
+
+# - name: packages | Check if reboot is required
+#   stat:
+#     path: /var/run/reboot-required
+#     get_md5: no
+#   register: reboot_file
+
+
+# - name: packages | Reboot if required
+#   reboot:
+#     connect_timeout: 120
+#   when: reboot_file.stat.exists == true
+
+...
