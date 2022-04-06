@@ -1,0 +1,16 @@
+#
+# Managed by Ansible
+#
+[Unit]
+Description=Schedule a scrub for zpool `%i`
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnBootSec=15min
+OnCalendar={{ timer.schedule | default('*-*-* 00:00:00') }}
+Persistent={{ timer.persistent | default('true') }}
+Unit=zpool-scrub@%i.service
+
+[Install]
+WantedBy=timers.target

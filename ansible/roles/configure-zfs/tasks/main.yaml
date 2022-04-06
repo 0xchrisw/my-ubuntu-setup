@@ -1,0 +1,77 @@
+#!/usr/bin/env ansible-playbook
+---
+
+#########################################
+## ZFS Configuration
+## Modify with:
+##   systemctl edit --force --full --user zpool-scrub@.timer
+## Verify with:
+##   journalctl -S today -f -u zpool-scrub@.service
+
+- name: Include Package List
+  include_vars: "../vars/zfs.yml"
+
+
+# - name: Scrub current zpools
+#   shell: |
+#     zpool scrub `zpool list -H -o name`
+
+
+- name: Increase the spa_slop_shift setting
+  template:
+    src:   zfs.conf
+    dest:  /etc/modprobe.d/zfs.conf
+    owner: root
+    group: root
+    mode:  0644
+    backup: false
+
+
+- name: Create systemd service
+  template:
+    src:   zpool-scrub@.service
+    dest:  /etc/systemd/system/zpool-scrub@.service
+    owner: root
+    group: root
+    mode: 0640
+    backup: false
+
+
+- name: Create systemd timer to scrub zpool
+  template:
+    src:   zpool-scrub@.timer
+    dest:  /etc/systemd/system/zpool-scrub@.timer
+    owner: root
+    group: root
+    mode: 0640
+    backup: false
+
+
+- name: Reload systemd
+  systemd:
+    daemon_reload: true
+
+
+- name: Enable Service/Timer Unit
+  systemd:
+      name: "{{ item }}"
+      state: started
+      enabled: true
+      masked: false
+      daemon_reload: true
+  with_items:
+    - zpool-scrub@bpool.timer
+    - zpool-scrub@rpool.timer
+    - zpool-scrub@bpool.service
+    - zpool-scrub@rpool.service
+
+
+- name: Send Notification
+  vars:
+    title: "Finished ZFS Configuration"
+    message: "ZFS configuration playbook has completed."
+  include_role:
+    name: send-notification
+
+
+...

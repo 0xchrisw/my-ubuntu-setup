@@ -1,0 +1,14 @@
+#
+# Managed by Ansible
+#
+[Unit]
+Description=Zpool `%i` scrub
+Requires=zfs.target
+After=zfs.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/zpool scrub %i
+
+[Install]
+WantedBy=zfs.target timers.target
