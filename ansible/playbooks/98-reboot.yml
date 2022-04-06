@@ -2,10 +2,10 @@
 ---
 
 ### sensible ###
-# - name: Reboot
-# - description: Reboot the device
-# - index: 98
-# - tags:
+# name: Reboot
+# description: Reboot the device
+# index: 98
+# tags:
 #   - reboot
 ### /sensible ###
 

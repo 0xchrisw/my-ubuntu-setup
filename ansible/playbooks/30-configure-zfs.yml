@@ -2,12 +2,12 @@
 ---
 
 ### sensible ###
-# - name: Configure ZFS
-# - description: Configure ZFS
-# - index: 30
-# - vars:
+# name: Configure ZFS
+# description: Configure ZFS
+# index: 30
+# vars:
 #   - -K
-# - tags:
+# tags:
 #   - zfs
 ### /sensible ###
 

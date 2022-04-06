@@ -2,12 +2,12 @@
 ---
 
 ### sensible ###
-# - name: Install Packages
-# - description: Install Useful Packages
-# - index: 2
-# - vars:
+# name: Install Packages
+# description: Install Useful Packages
+# index: 2
+# vars:
 #   - -K
-# - tags:
+# tags:
 #   - packages
 ### /sensible ###
 
