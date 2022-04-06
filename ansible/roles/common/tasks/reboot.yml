@@ -1,0 +1,52 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- set_fact:
+    rebooting: false
+
+
+- name: common | Check if reboot is required
+  stat:
+    path: /var/run/reboot-required
+    get_md5: no
+  register: reboot_file
+
+
+- name: common | Notify reboot is required
+  debug:
+    msg: "Reboot is required"
+  when: reboot_file.stat.exists == true
+
+
+- name: common | Prompt for reboot
+  pause:
+    prompt: "Reboot now? (y/n)"
+    echo: yes
+  register: result
+
+
+- name: common | Set reboot flag
+  set_fact:
+    rebooting: true
+  when: result.user_input == "y"
+
+
+- name: common | Halt play if not rebooting
+  block:
+    - meta: end_play
+  when: rebooting == false
+
+
+- name: common | Reboot initiated
+  block:
+    - meta: flush_handlers
+
+    - name: common | Rebooting in 30 seconds...
+      reboot:
+          msg: "Rebooting in 30 seconds"
+          pre_reboot_delay: 30
+      #shell: /sbin/shutdown -r now -b
+  when: rebooting == true
+
+
+...
