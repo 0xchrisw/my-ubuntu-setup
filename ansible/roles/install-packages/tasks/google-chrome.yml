@@ -1,0 +1,8 @@
+#!/usr/bin/env ansible-playbook
+---
+
+# http://dl.google.com/linux/chrome/rpm/stable/x86_64
+# https://dl.google.com/linux/linux_signing_key.pub
+
+
+...
