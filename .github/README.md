@@ -14,7 +14,8 @@
   <a href="#about">About</a> •
   <a href="#usage">Usage</a> •
   <a href="#features">Features</a> •
-  <a href="#license">License</a> •
+  <a href="#demo">Demo</a> •
+  <a href="#license">License</a>
 
 </p>
 
@@ -34,6 +35,8 @@ chmod +x install.yml
 
 ## Features
 
+## Demo
+![screencast](docs/assets/demo.gif)
 
 ## License
 
