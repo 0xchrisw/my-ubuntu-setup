@@ -1,0 +1,26 @@
+#!/usr/bin/env -S ansible-playbook -K
+---
+
+### sensible ###
+# name: Install DoD CAC
+# description: |
+#   Install DoD Certificates and configure CAC Module
+# index: 11
+# vars:
+#   - -K
+# tags:
+#   - dod-cac
+### /sensible ###
+
+
+- name: Install Linux CAC Modules
+  hosts:        localhost
+  become:       false
+  connection:   local
+  gather_facts: true
+
+  roles:
+    - { role: install-dod-cac }
+
+
+...
